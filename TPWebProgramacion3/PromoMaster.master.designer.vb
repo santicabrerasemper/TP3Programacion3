@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class SiteMaster
+Partial Public Class PromoMaster
 
     '''<summary>
     '''Control MainContent.

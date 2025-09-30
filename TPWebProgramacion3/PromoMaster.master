@@ -1,0 +1,38 @@
+﻿%@ Master Language="VB" AutoEventWireup="true" CodeBehind="PromoMaster.master.vb" Inherits="TPWebProgramacion3.PromoMaster" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title><%: Page.Title %> - Promo WEB</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <form runat="server">
+        <!-- Header con solo Home en el menú -->
+        <header class="bg-dark text-white p-3 mb-4">
+            <div class="container">
+                <h1 class="h3">Promo WEB</h1>
+                <nav>
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link text-white" href="Home.aspx">Home</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Contenido dinámico de cada página -->
+        <main class="container">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-light text-center py-3 mt-4">
+            <p>&copy; <%: DateTime.Now.Year %> - Promo WEB</p>
+        </footer>
+    </form>
+
+    <script src="Scripts/bootstrap.bundle.js"></script>
+</body>
+</html>
