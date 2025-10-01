@@ -1,5 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
-using Dominio;
+﻿using Dominio;
+using System.Data.SqlClient;
 
 namespace ConexionesBD
 {
@@ -8,7 +8,7 @@ namespace ConexionesBD
         private readonly string _cs;
         public ClienteRepository(string connectionString) => _cs = connectionString;
 
-        public Cliente? GetByDocumento(string documento)
+        public Cliente GetByDocumento(string documento)
         {
             const string sql = @"SELECT Id,Documento,Nombre,Apellido,Email,Direccion,Ciudad,CP
                                  FROM Clientes WHERE Documento=@doc";

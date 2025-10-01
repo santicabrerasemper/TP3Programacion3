@@ -33,7 +33,7 @@ namespace Negocio
 
         }
 
-        public void enviarEmail ()
+        public void enviarEmail()
         {
             try
             {

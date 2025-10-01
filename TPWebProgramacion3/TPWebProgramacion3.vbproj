@@ -145,6 +145,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="EleccionPremio.aspx" />
+    <Content Include="Exito.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Formulario.aspx" />
     <Content Include="Global.asax" />
@@ -238,6 +239,13 @@
     </Compile>
     <Compile Include="EleccionPremio.aspx.vb">
       <DependentUpon>EleccionPremio.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Exito.aspx.designer.vb">
+      <DependentUpon>Exito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Exito.aspx.vb">
+      <DependentUpon>Exito.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Formulario.aspx.designer.vb">
@@ -345,6 +353,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConexionBD\ConexionBD.csproj">
+      <Project>{ecd7b88f-35df-4e60-9069-420504d72bdd}</Project>
+      <Name>ConexionBD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dominio_\Dominio.csproj">
+      <Project>{c652d0fa-632f-458f-a943-60c2ade65bd5}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio_\Negocio.csproj">
+      <Project>{5010ae1c-9e4d-4310-855f-34819bd2afc0}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

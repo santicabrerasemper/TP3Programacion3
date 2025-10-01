@@ -1,99 +1,106 @@
-﻿<%@ Page Title="Formulario" Language="VB" MasterPageFile="~/PromoMaster.master" AutoEventWireup="true" CodeBehind="Formulario.aspx.vb" Inherits="TPWebProgramacion3.Formulario" %>
+﻿<%@ Page Title="Formulario" Language="VB" MasterPageFile="~/PromoMaster.master"
+    AutoEventWireup="true" CodeBehind="Formulario.aspx.vb"
+    Inherits="TPWebProgramacion3.Formulario" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
   <div class="container py-4">
     <h1 class="display-6 fw-semibold mb-4">Ingresá tus datos</h1>
 
-  
-    <form class="needs-validation" novalidate>
-    
-      <div class="mb-3">
-        <label for="dni" class="form-label">DNI</label>
-        <input type="text" class="form-control" id="dni" placeholder="99888777" required />
-        <div class="invalid-feedback">Ingresá tu DNI.</div>
+    <!-- Mensajes -->
+    <asp:Literal ID="litError" runat="server" EnableViewState="false" />
+
+    <!-- DNI -->
+    <div class="row g-3">
+      <div class="col-lg-6 col-md-8">
+        <label for="txtDni" class="form-label">DNI</label>
+        <asp:TextBox ID="txtDni" runat="server" CssClass="form-control" MaxLength="12" />
+        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDni"
+            CssClass="text-danger small" ErrorMessage="Ingresá tu DNI" Display="Dynamic" />
+      </div>
+    </div>
+
+    <!-- Nombre / Apellido / Email -->
+    <div class="row g-3 mt-1">
+      <div class="col-md-4">
+        <label for="txtNombre" class="form-label">Nombre</label>
+        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" />
+        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNombre"
+            CssClass="text-danger small" ErrorMessage="Ingresá tu nombre" Display="Dynamic" />
       </div>
 
-      <div class="row g-3">
-       
-        <div class="col-md-4">
-          <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="nombre" placeholder="Juanito" required />
-          <div class="valid-feedback">Ok</div>
-          <div class="invalid-feedback">Ingresá tu nombre.</div>
-        </div>
-
-       
-        <div class="col-md-4">
-          <label for="apellido" class="form-label">Apellido</label>
-          <input type="text" class="form-control" id="apellido" placeholder="Argento" required />
-          <div class="invalid-feedback">Ingresá tu apellido.</div>
-        </div>
-
-       
-        <div class="col-md-4">
-          <label for="email" class="form-label">Email</label>
-          <div class="input-group">
-            <span class="input-group-text" id="addon-at">@</span>
-            <input type="email" class="form-control" id="email" placeholder="email@email.com"
-                   aria-describedby="addon-at" required />
-            <div class="invalid-feedback">Email inválido.</div>
-          </div>
-        </div>
+      <div class="col-md-4">
+        <label for="txtApellido" class="form-label">Apellido</label>
+        <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" />
+        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtApellido"
+            CssClass="text-danger small" ErrorMessage="Ingresá tu apellido" Display="Dynamic" />
       </div>
 
-      <div class="row g-3 mt-1">
-       
-        <div class="col-md-6">
-          <label for="direccion" class="form-label">Dirección</label>
-          <input type="text" class="form-control" id="direccion" placeholder="Mi ciudad" required />
-          <div class="invalid-feedback">Falta dirección.</div>
+      <div class="col-md-4">
+        <label for="txtEmail" class="form-label">Email</label>
+        <div class="input-group">
+          <span class="input-group-text" id="addon-at">@</span>
+          <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" />
         </div>
+        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEmail"
+            CssClass="text-danger small" ErrorMessage="Ingresá tu email" Display="Dynamic" />
+        <asp:RegularExpressionValidator runat="server" ControlToValidate="txtEmail"
+            CssClass="text-danger small" Display="Dynamic"
+            ErrorMessage="Formato de email inválido"
+            ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" />
+      </div>
+    </div>
 
-       
-        <div class="col-md-4">
-          <label for="ciudad" class="form-label">Ciudad</label>
-          <input type="text" class="form-control" id="ciudad" placeholder="Calle 123" required />
-          <div class="invalid-feedback">Ingresá tu ciudad.</div>
-        </div>
-
-      
-        <div class="col-md-2">
-          <label for="cp" class="form-label">CP</label>
-          <input type="text" class="form-control" id="cp" placeholder="xxxx" required />
-          <div class="invalid-feedback">Ingresá el CP.</div>
-        </div>
+    <!-- Dirección / Ciudad / CP -->
+    <div class="row g-3 mt-1">
+      <div class="col-md-6">
+        <label for="txtDireccion" class="form-label">Dirección</label>
+        <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" />
+        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDireccion"
+            CssClass="text-danger small" ErrorMessage="Ingresá la dirección" Display="Dynamic" />
       </div>
 
-    
-      <div class="form-check mt-3">
-        <input class="form-check-input" type="checkbox" value="" id="terms" required />
-        <label class="form-check-label" for="terms">
-          Acepto los términos y condiciones.
-        </label>
-        <div class="invalid-feedback">Debés aceptar los términos.</div>
+      <div class="col-md-4">
+        <label for="txtCiudad" class="form-label">Ciudad</label>
+        <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control" />
+        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtCiudad"
+            CssClass="text-danger small" ErrorMessage="Ingresá la ciudad" Display="Dynamic" />
       </div>
 
-     
-      <div class="mt-3">
-        <button type="submit" class="btn btn-primary">Participar!</button>
+      <div class="col-md-2">
+        <label for="txtCp" class="form-label">CP</label>
+        <asp:TextBox ID="txtCp" runat="server" CssClass="form-control" MaxLength="10" />
+        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtCp"
+            CssClass="text-danger small" ErrorMessage="Ingresá el CP" Display="Dynamic" />
+        <asp:RegularExpressionValidator runat="server" ControlToValidate="txtCp"
+            CssClass="text-danger small" Display="Dynamic"
+            ErrorMessage="Sólo números en el CP"
+            ValidationExpression="^\d{1,10}$" />
       </div>
-    </form>
+    </div>
+
+    <!-- Botones -->
+    <div class="mt-3 d-flex gap-2">
+      <asp:Button ID="btnBuscarDni" runat="server" CssClass="btn btn-outline-secondary"
+                  Text="Buscar DNI" />
+      <asp:Button ID="btnParticipar" runat="server" CssClass="btn btn-primary"
+                  Text="¡Participar!" />
+    </div>
   </div>
 
- 
+  <!-- Script Bootstrap validation -->
   <script>
-    (function () {
-      'use strict';
-      var forms = document.querySelectorAll('.needs-validation');
-      Array.prototype.slice.call(forms).forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    })();
+      (function () {
+          'use strict';
+          var forms = document.querySelectorAll('.needs-validation');
+          Array.prototype.slice.call(forms).forEach(function (form) {
+              form.addEventListener('submit', function (event) {
+                  if (!form.checkValidity()) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                  }
+                  form.classList.add('was-validated');
+              }, false);
+          });
+      })();
   </script>
 </asp:Content>
