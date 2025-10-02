@@ -1,49 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio
 {
     public class ServicioEmail
     {
-        private MailMessage email;
-        private SmtpClient server;
+        private const string SmtpHost = "smtp.outlook.com";
+        private const int SmtpPort = 587;
+        private const bool Ssl = true;
 
+        private const string Usuario = "pruebasfacultad@outlook.es";
+        private const string Clave = "Hola123#"; 
+        private const string FromName = "TuElectro";            
+      
 
-        public ServicioEmail()
+        public void Enviar(string destino, string asunto, string htmlBody)
         {
-            server = new SmtpClient();
-            server.Credentials = new NetworkCredential("", "");
-            server.EnableSsl = true;
-            server.Port = 587;
-            server.Host = "smtp.gmail.com";
-        }
-
-        public void armarCorreo(string emailDestino, string asunto, string cuerpo)
-        {
-            email = new MailMessage();
-            email.From = new MailAddress("noresponder@ecommerceprogra");
-            email.Subject = asunto;
-            email.IsBodyHtml = true;
-            email.Body = "<h1> Gracias por partic  </h1> <br>Ya estas inscripto...</br>";
-
-        }
-
-        public void enviarEmail()
-        {
-            try
+            using (var msg = new MailMessage())
+            using (var smtp = new SmtpClient(SmtpHost, SmtpPort))
             {
-                server.Send(email);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                msg.From = new MailAddress(Usuario, FromName, Encoding.UTF8); 
+                msg.To.Add(destino);
+                msg.Subject = asunto;
+                msg.SubjectEncoding = Encoding.UTF8;
+                msg.Body = htmlBody;
+                msg.BodyEncoding = Encoding.UTF8;
+                msg.IsBodyHtml = true;
+
+                smtp.EnableSsl = Ssl;
+                smtp.Credentials = new NetworkCredential(Usuario, Clave);
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Timeout = 15000;
+
+                smtp.Send(msg);
             }
         }
-
     }
 }

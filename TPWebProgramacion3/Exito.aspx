@@ -4,12 +4,8 @@
     <div class="alert alert-success shadow-sm" role="alert">
       <h4 class="alert-heading">¡Listo, ya estás participando! 🎉</h4>
       <p>
-        <strong><asp:Literal ID="litNombre" runat="server" /></strong>,
+        <strong><asp:Literal ID="litNombre" runat="server" /></strong>
         registramos tu participación correctamente.
-      </p>
-      <p class="mb-0">
-        Premio seleccionado: <strong><asp:Literal ID="litPremio" runat="server" /></strong><br />
-        Código de voucher: <code><asp:Literal ID="litVoucher" runat="server" /></code>
       </p>
     </div>
 
