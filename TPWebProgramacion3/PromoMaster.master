@@ -8,6 +8,7 @@
 </head>
 <body>
   <form id="form1" runat="server" class="needs-validation" novalidate>
+        <asp:ScriptManager ID="sm" runat="server" />
     <header class="bg-dark text-white p-3 mb-4">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
