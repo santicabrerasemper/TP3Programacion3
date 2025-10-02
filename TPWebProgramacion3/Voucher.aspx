@@ -2,5 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Voucher</h2>
-    <p>En esta página el usuario ingresará su código de voucher.</p>
+    <p>Ingrese su código de voucher:</p>
+    <asp:TextBox ID="txtCodigo" runat="server"></asp:TextBox>
+    <asp:Button ID="btnValidar" Text="Validar" runat="server" />
+    <br />
+    <asp:Label ID="lblMensaje" ForeColor="Red" runat="server"></asp:Label>
 </asp:Content>

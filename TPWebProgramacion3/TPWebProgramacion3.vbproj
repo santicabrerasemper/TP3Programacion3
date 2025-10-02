@@ -317,7 +317,7 @@
     </Compile>
     <Compile Include="Voucher.aspx.vb">
       <DependentUpon>Voucher.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
