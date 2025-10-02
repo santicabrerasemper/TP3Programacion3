@@ -19,7 +19,6 @@
                             <a class="nav-link text-white" href="Home.aspx">Home</a>
                         </li>
                     </ul>
-                        
                     <nav class="d-flex ms-auto">
                       <a class="btn btn-success" href="Voucher.aspx">Cargar Voucher</a>
                     </nav>
