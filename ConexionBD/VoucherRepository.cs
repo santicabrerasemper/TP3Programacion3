@@ -12,13 +12,11 @@ namespace ConexionBD
     {
         private readonly string _cs;
 
-        // Constructor que recibe la cadena de conexión
         public VoucherRepository(string connectionString)
         {
             _cs = connectionString;
         }
 
-        // Obtener un voucher por su código
         public Voucher GetByCodigo(string codigo)
         {
             const string sql = @"SELECT CodigoVoucher, IdCliente, FechaCanje, IdArticulo 
@@ -46,7 +44,6 @@ namespace ConexionBD
             }
         }
 
-        // Verificar si un voucher está disponible (no usado)
         public bool EstaDisponible(string codigo)
         {
             const string sql = @"SELECT COUNT(*) 
@@ -62,7 +59,6 @@ namespace ConexionBD
             }
         }
 
-        // Marcar un voucher como usado por un cliente
         public void CanjearVoucher(string codigo, int idCliente, int idArticulo)
         {
             const string sql = @"UPDATE Vouchers

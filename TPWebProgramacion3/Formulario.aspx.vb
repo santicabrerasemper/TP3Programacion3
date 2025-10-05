@@ -8,11 +8,10 @@ Partial Public Class Formulario
     Inherits System.Web.UI.Page
 
     Private Function Servicio() As ServicioCliente
-        Dim cs = ConfigurationManager.ConnectionStrings("PromoDb").ConnectionString
+        Dim cs = ConfigurationManager.ConnectionStrings("PromosDB").ConnectionString
         Return New ServicioCliente(New ClienteRepository(cs))
     End Function
 
-    ' Regex (mismos que en el .aspx)
     Private ReadOnly RxDni As New Regex("^\d{7,12}$")
     Private ReadOnly RxNombre As New Regex("^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ' -]{2,40}$")
     Private ReadOnly RxApellido As New Regex("^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ' -]{2,40}$")
@@ -36,9 +35,9 @@ Partial Public Class Formulario
 
     Protected Sub btnParticipar_Click(sender As Object, e As EventArgs) Handles btnParticipar.Click
         litError.Text = ""
-        ' 1) Validadores WebForms del .aspx
+
         If Not Page.IsValid Then Exit Sub
-        ' 2) Defensa extra en servidor (evita “…” u otros bypass)
+
         If Not CamposValidosServidor() Then Exit Sub
 
         Dim s = Servicio()
@@ -68,7 +67,7 @@ Partial Public Class Formulario
                 Dim html = $"<h2>¡Gracias, {Server.HtmlEncode(c.Nombre)}!</h2><p>Ya estás inscripto a la promo.</p>"
                 mail.Enviar(c.Email, "Registro exitoso - TuElectro", html)
             Catch
-                ' podés loguear si querés
+
             End Try
         End If
 

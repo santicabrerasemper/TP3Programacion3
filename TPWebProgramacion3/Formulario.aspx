@@ -33,7 +33,6 @@
 
         <asp:Literal ID="litError" runat="server" EnableViewState="false" />
 
-        <!-- DNI -->
         <div class="row g-3">
           <div class="col-lg-6 col-md-8">
             <label for="txtDni" class="form-label">DNI</label>
@@ -50,7 +49,6 @@
           </div>
         </div>
 
-        <!-- Nombre / Apellido / Email -->
         <div class="row g-3 mt-1">
           <div class="col-md-4">
             <label for="txtNombre" class="form-label">Nombre</label>
@@ -93,7 +91,6 @@
           </div>
         </div>
 
-        <!-- Dirección / Ciudad / CP -->
         <div class="row g-3 mt-1">
           <div class="col-md-6">
             <label for="txtDireccion" class="form-label">Dirección</label>
@@ -146,7 +143,7 @@
   </div>
 
   <script>
-      // (tu JS tal cual)
+
       function getInputForValidator(v) {
           var id = v.controltovalidate;
           var el = document.getElementById(id);
